@@ -1,13 +1,11 @@
-BTCUSDT Market Microstructure Research
+BIST Statistical Arbitrage and Pairs Trading Research
 
-This project investigates the ability of Order Book Imbalance (OBI) to predict short-term price movements using Binance BTCUSDT order book data, and whether this predictive information can be translated into a profitable trading strategy after transaction costs.
+This project investigates statistical arbitrage opportunities in Borsa Istanbul (BIST) equities using cointegration based pairs trading strategies and walk forward backtesting.
 
-Order book data was collected using Python and the Binance REST API. Key market microstructure features, including OBI, OFI, bid-ask spread, midprice, and microprice, were calculated. Their relationships with future price movements were examined through correlation analysis, signal decay analysis, and backtesting.
+Historical price data for 30 BIST stocks was collected using Python and Yahoo Finance. Potential trading pairs were identified through return correlation analysis, Engle Granger cointegration tests, and mean reversion half life estimation. Rolling hedge ratios and Z scores were then used to generate systematic entry and exit signals.
 
-The research developed entry rules based on strong OBI signals and evaluated the effects of different holding periods and transaction costs on strategy performance. The selected strategy was then tested on an independent dataset of 2,000 order book snapshots.
+The strategy was evaluated using a walk forward backtesting framework consisting of 252 day formation periods and 63 day out of sample trading windows. Transaction costs were incorporated into the calculations, and strategy performance was analyzed using metrics such as cumulative returns, the Sharpe ratio, annualized volatility, and maximum drawdown.
 
-In the final test, 50 trades were simulated, with only one remaining profitable after transaction costs. To investigate the impact of exit timing, a theoretical Best-Case Exit Analysis was conducted by selecting the most favorable observed exit price within a 30-snapshot window for each trade. Even under this assumption, 49 out of 50 trades failed to overcome transaction costs.
+The research examines whether stock pairs that have historically exhibited cointegration can generate profitable trading opportunities through mean reversion outside the formation period. The study also highlights the importance of transaction costs, changing relationships between stock pairs, and proper backtesting methodology.
 
-Key Finding: Although order book imbalance may contain predictive information about short-term price movements, this statistical advantage does not necessarily translate into economic profitability when the resulting price movements are insufficient to cover trading costs.
-
-This Quantitative Research project focuses on market microstructure, financial data analysis, statistical signal research, and transaction-cost-aware backtesting. The findings are limited to the observed market period and simulation assumptions and do not represent live trading performance.
+This Quantitative Research project focuses on statistical arbitrage, time series analysis, systematic trading strategies, and out of sample performance evaluation.
