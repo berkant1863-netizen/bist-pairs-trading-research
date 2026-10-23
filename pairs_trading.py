@@ -10,29 +10,7 @@ from statsmodels.tsa.stattools import coint
 
 
 # ============================================================
-# PAIRS TRADING PROJECT
-#
-# Mantık:
-#
-# 1) BIST hisselerini indir
-# 2) Formation döneminde uygun pair'leri bul
-# 3) Correlation + cointegration + half-life kontrol et
-# 4) En iyi pair'leri seç
-# 5) Sonraki dönemde OOS trade et
-# 6) Rolling beta hesapla
-# 7) Spread oluştur
-# 8) Z-score ile entry / exit yap
-# 9) Transaction cost çıkar
-# 10) Net return, Sharpe, drawdown hesapla
-#
-# Tek dosya.
-# Class yok.
-# Pipeline yok.
-# ============================================================
-
-
-# ============================================================
-# 1. AYARLAR
+# 1. SETTİNGS
 # ============================================================
 
 START_DATE = "2020-01-01"
@@ -41,7 +19,7 @@ END_DATE = None
 
 
 # ------------------------------------------------------------
-# BIST HİSSE EVRENİ
+# BIST STOCKS
 # ------------------------------------------------------------
 
 TICKERS = [
@@ -86,7 +64,7 @@ TICKERS = [
 
 
 # ============================================================
-# WALK-FORWARD AYARLARI
+# WALK-FORWARD SETTİNGS
 # ============================================================
 
 # Pair seçmek için geçmiş kaç trading day?
@@ -97,7 +75,7 @@ TRADING_DAYS = 63
 
 
 # ============================================================
-# ROLLING MODEL AYARLARI
+# ROLLING MODEL SETTİNGS
 # ============================================================
 
 # Hedge ratio / beta
@@ -108,7 +86,7 @@ ZSCORE_WINDOW = 20
 
 
 # ============================================================
-# PAIR SELECTION FİLTRELERİ
+# PAIR SELECTION SETTİNGS
 # ============================================================
 
 MIN_CORRELATION = 0.60
@@ -120,12 +98,12 @@ MIN_HALF_LIFE = 2
 MAX_HALF_LIFE = 60
 
 
-# Bir OOS window'da maksimum kaç pair?
+
 MAX_PAIRS_PER_WINDOW = 5
 
 
 # ============================================================
-# TRADING KURALLARI
+# TRADING RULES
 # ============================================================
 
 ENTRY_Z = 2.0
@@ -137,25 +115,13 @@ STOP_Z = 3.5
 
 # ============================================================
 # TRANSACTION COST
-#
-# Pair'in iki bacağı var:
-#
-# A hisse
-# B hisse
-#
-# Açılış + kapanış toplam round-trip maliyetini
-# burada bps olarak varsayıyoruz.
-#
-# 10 bps = %0.10
-#
-# Daha sonra gerçek broker maliyetine göre değiştiririz.
 # ============================================================
 
 ROUND_TRIP_COST_BPS = 10.0
 
 
 # ============================================================
-# 2. VERİYİ İNDİR
+# 2. DOWNLOAD DATA
 # ============================================================
 
 print()
@@ -199,7 +165,7 @@ else:
 
 
 # ============================================================
-# CLOSE FİYATLARINI AL
+# CLOSE PRİCE
 # ============================================================
 
 if isinstance(
@@ -233,7 +199,7 @@ else:
 
 
 # ============================================================
-# TARİHE GÖRE SIRALA
+# SORT
 # ============================================================
 
 prices = (
