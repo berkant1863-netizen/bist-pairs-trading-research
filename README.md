@@ -1,11 +1,11 @@
-BIST Statistical Arbitrage and Pairs Trading Research
+BIST Pairs Trading | Quantitative Research
 
-This project investigates statistical arbitrage opportunities in Borsa Istanbul (BIST) equities using cointegration based pairs trading strategies and walk forward backtesting.
+In this project, I explored a pairs trading strategy using 12 stocks listed on Borsa Istanbul. My goal was to investigate whether statistical relationships between stocks could be turned into a profitable trading strategy after accounting for transaction costs.
 
-Historical price data for 30 BIST stocks was collected using Python and Yahoo Finance. Potential trading pairs were identified through return correlation analysis, Engle Granger cointegration tests, and mean reversion half life estimation. Rolling hedge ratios and Z scores were then used to generate systematic entry and exit signals.
+Using Python, I selected stock pairs based on correlation and cointegration tests, estimated dynamic hedge ratios with rolling OLS regression, and generated trading signals using a z score based mean reversion approach. To evaluate the strategy, I built a walk-forward backtesting framework covering 22 periods and 1,386 out-of-sample trading days.
 
-The strategy was evaluated using a walk forward backtesting framework consisting of 252 day formation periods and 63 day out of sample trading windows. Transaction costs were incorporated into the calculations, and strategy performance was analyzed using metrics such as cumulative returns, the Sharpe ratio, annualized volatility, and maximum drawdown.
+The strategy produced a total return of 3.04% before transaction costs. However, after applying a 0.10% transaction cost to traded notional, the return dropped to −3.75%. This comparison helped me understand how significantly trading costs can affect the performance of a statistical trading strategy.
 
-The research examines whether stock pairs that have historically exhibited cointegration can generate profitable trading opportunities through mean reversion outside the formation period. The study also highlights the importance of transaction costs, changing relationships between stock pairs, and proper backtesting methodology.
+Throughout the project, I focused not only on developing the strategy but also on evaluating its results and understanding its limitations. One of my key takeaways was that identifying statistically related stocks does not necessarily translate into a profitable trading strategy.
 
-This Quantitative Research project focuses on statistical arbitrage, time series analysis, systematic trading strategies, and out of sample performance evaluation.
+I developed the project using Python, pandas, NumPy, statsmodels, and yfinance. It is intended as a quantitative research prototype rather than a live trading system, and it does not fully account for real-world execution conditions or short-selling costs.
